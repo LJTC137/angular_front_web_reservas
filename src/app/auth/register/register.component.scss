@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Italiana';
+    src: url('../../../assets/fonts/Italiana-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Island';
+    src: url('../../../assets/fonts/IslandMoments-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Inria';
+    src: url('../../../assets/fonts/InriaSerif-Italic.ttf') format('truetype');
+  }
+
+  h1 {
+    font-family: 'Italiana', sans-serif;
+    font-size: 65px;
+    font-weight: 200;
+  }
+
+  h2 {
+    font-family: 'Island', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-family: 'Inria', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 25px;
+    }
+}

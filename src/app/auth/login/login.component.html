@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-10 col-md-6 col-lg-5">
+      <img
+        src="../../../assets/images/login-1.jpg"
+        class="img-fluid d-block mx-auto"
+        alt="Login Image"
+        width="86%"
+      />
+    </div>
+    <div class="col-10 col-md-6 col-lg-7 vh-100">
+      <div class="d-flex align-items-center justify-content-center h-100">
+        <div>
+          <h1 class="title-1 text-center">Table Booker</h1>
+          <h2 class="text-center">"La comida del cielo en la tierra"</h2>
+          <h3 class="text-center">Inicio de sesión</h3>
+          <form
+            class="d-flex flex-column align-items-center"
+            (ngSubmit)="onLogin()"
+          >
+            <div class="mb-3 col-12 col-sm-8 col-lg-8">
+              <label for="correo" class="form-label">Correo</label>
+              <input
+                type="email"
+                class="form-control"
+                id="correo"
+                name="correo"
+                placeholder="usuario@gmail.com"
+                [(ngModel)]="usuario.correo"
+              />
+            </div>
+            <div class="mb-3 col-12 col-sm-8 col-lg-8">
+              <label for="contrasenia" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="contrasenia"
+                name="contrasenia"
+                placeholder="Contraseña"
+                [(ngModel)]="usuario.contrasenia"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary rounded-pill py-3 px-5 my-4 w-100"
+            >
+              Log In
+            </button>
+          </form>
+          <div class="row justify-content-center text-center">
+            <div class="col">
+              <p>
+                <a href="/auth/register" class="text-decoration-none"
+                  >Registrarse aquí</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

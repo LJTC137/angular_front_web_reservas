@@ -1,0 +1,153 @@
+<div class="container-fluid">
+  <div class="bg-image">
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 text-center">
+        <img
+          src="../../../assets/icons/user_login.svg"
+          class="mx-auto"
+          alt="user"
+          width="100"
+        />
+        <h2>{{ usuario.nombres + " " + usuario.apellidos }}</h2>
+      </div>
+      <div class="col-10 text-center">
+        <button
+          id="updateButton"
+          (click)="editProfile()"
+          class="btn btn-warning m-2"
+          [hidden]="isEditing"
+        >
+          Editar
+        </button>
+        <button
+          id="saveButton"
+          (click)="editProfile()"
+          (click)="updateUser(id_user, usuario)"
+          class="btn btn-success m-2"
+          [hidden]="!isEditing"
+        >
+          Guardar
+        </button>
+        <button
+          id="cancelButton"
+          (click)="editProfile()"
+          class="btn btn-danger m-2"
+          [hidden]="!isEditing"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+    <!-- ============ Panel de datos cuando no esta editando ============= -->
+    <div
+      class="row justify-content-center mt-4 text-center"
+      *ngIf="isEditing === false"
+    >
+      <div class="col-10 col-md-6 col-lg-6">
+        <div class="row mb-4 justify-content-center">
+          <div class="col-lg-3">
+            <label for="nombres">Nombres:</label>
+          </div>
+          <div class="col-lg-3">
+            {{ usuario.nombres }}
+          </div>
+        </div>
+        <div class="row mb-4 justify-content-center">
+          <div class="col-lg-3">
+            <label for="apellidos">Apellidos:</label>
+          </div>
+          <div class="col-lg-3">
+            {{ usuario.apellidos }}
+          </div>
+        </div>
+        <div class="row mb-4 justify-content-center">
+          <div class="col-lg-3">
+            <label for="identificacion">Identificacion:</label>
+          </div>
+          <div class="col-lg-3">
+            {{ usuario.identificacion }}
+          </div>
+        </div>
+        <div class="row mb-4 justify-content-center">
+          <div class="col-lg-3">
+            <label for="correo">Correo electrónico:</label>
+          </div>
+          <div class="col-lg-3">
+            {{ usuario.correo }}
+          </div>
+        </div>
+        <div class="row mb-4 justify-content-center">
+          <div class="col-lg-3">
+            <label for="saldo">Tu Saldo:</label>
+          </div>
+          <div class="col-lg-3">${{ usuario.saldo }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== Formulario cuando esta editando -->
+    <div class="row justify-content-center mt-4" *ngIf="isEditing === true">
+      <div class="col-10 col-md-6 col-lg-6">
+        <div class="container mt-4">
+          <form>
+            <div class="form-group">
+              <label for="nombres">Nombres:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombres"
+                placeholder="Ingrese sus nombres"
+                name="nombres"
+                [(ngModel)]="usuario.nombres"
+              />
+            </div>
+            <div class="form-group">
+              <label for="apellidos">Apellidos:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="apellidos"
+                placeholder="Ingrese sus apellidos"
+                name="apellidos"
+                [(ngModel)]="usuario.apellidos"
+              />
+            </div>
+            <div class="form-group">
+              <label for="identificacion">Identificación:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="identificacion"
+                placeholder="Ingrese su identificación"
+                name="identificacion"
+                [(ngModel)]="usuario.identificacion"
+              />
+            </div>
+            <div class="form-group">
+              <label for="n">Correo Electrónico:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Ingrese su correo electrónico"
+                name="email"
+                [(ngModel)]="usuario.correo"
+              />
+            </div>
+            <div class="form-group">
+              <label for="saldo">Saldo:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="saldo"
+                placeholder="Ingrese cuanto de saldo"
+                name="saldo"
+                [(ngModel)]="usuario.saldo"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

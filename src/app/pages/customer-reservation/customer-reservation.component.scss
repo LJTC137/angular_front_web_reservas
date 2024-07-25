@@ -1,0 +1,40 @@
+.container-fluid {
+  background-color: #252836;
+  color: white;
+}
+
+.custom-table, .title {
+  background-color: #1F1D2B;
+  color: white;
+}
+
+.title2 {
+  background-color: #1F1D2B;
+  color: white;
+  border: solid 1px white;
+}
+
+hr {
+  color: #9A9B9F;
+  width: 100%;
+  border-width: 5px;
+}
+
+table tr td,
+table tr th {
+  background-color: transparent !important;
+  font-size: 16px;
+  color: white;
+}
+
+.btn-icon {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-icon img {
+  display: block;
+  height: auto;
+}

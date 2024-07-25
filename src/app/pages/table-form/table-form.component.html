@@ -1,0 +1,90 @@
+<div class="container-fluid p-0">
+  <div class="row justify-content-center align-items-center m-0">
+    <div class="col-10 col-md-6 col-lg-7">
+      <h1 class="text-center my-4">
+        {{ isEditing ? "Actualizando mesa" : "Registro de mesa" }}
+      </h1>
+      <div class="card shadow-lg mb-5">
+        <div class="card-body p-5">
+          <form
+            (ngSubmit)="
+              isEditing ? updateMesa(mesa.id_mesa, mesa) : saveMesa(mesa)
+            "
+          >
+            <div class="mb-3">
+              <label for="cantidadPersonas" class="form-label"
+                >Capacidad de personas</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="cantidadPersonas"
+                name="cantidadPersonas"
+                [(ngModel)]="mesa.cantidad_personas"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="numeroMesa" class="form-label">Número de mesa</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="numeroMesa"
+                name="numeroMesa"
+                [(ngModel)]="mesa.numero_de_mesa"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="planta" class="form-label">Planta</label>
+              <input
+                type="number"
+                class="form-control"
+                id="planta"
+                name="planta"
+                [(ngModel)]="mesa.planta"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="costoMesa" class="form-label"
+                >Costo de reserva de la mesa</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="costoMesa"
+                name="costoMesa"
+                [(ngModel)]="mesa.costo_mesa"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-check-label m-1" for="esVip"> Es vip </label>
+              <input
+                class="form-check-input m-1"
+                type="checkbox"
+                id="esVip"
+                name="esVip"
+                [(ngModel)]="mesa.esVip"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-check-label m-1" for="estado">
+                Disponible
+              </label>
+              <input
+                class="form-check-input m-1"
+                type="checkbox"
+                id="estado"
+                name="estado"
+                [(ngModel)]="mesa.estado"
+              />
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary rounded-pill">
+                {{ isEditing ? "Actualizar" : "Guardar" }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

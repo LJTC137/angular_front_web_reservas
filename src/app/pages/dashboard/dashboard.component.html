@@ -1,0 +1,165 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center pt-3">
+        {{ isAdmin ? "Panel de administrador" : "Panel de usuario" }}
+      </h1>
+      <h2 class="text-center mb-5">
+        Bienvenido, {{ usuario.nombres }} {{ usuario.apellidos }}
+      </h2>
+    </div>
+  </div>
+  <div class="row justify-content-center text-center">
+    <!-- ======================= Card listado todas las reservacion ======================= -->
+    <div class="col-lg-3 col-md-6 col-sm-12 m-3" *ngIf="isAdmin">
+      <!-- Clase mb-sm-0 para eliminar el margen en pantallas pequeñas -->
+      <div class="card rounded custom-card position-relative">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="../../../assets/icons/clipboard.svg"
+              alt="clipboard"
+              width="50%"
+            />
+          </div>
+          <div class="m-2">
+            <h5 class="card-title text-center">Reservaciones</h5>
+            <a
+              type="button"
+              class="stretched-link"
+              (click)="adminReservation()"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="d-sm-none" *ngIf="isAdmin" />
+    <!-- ======================= Card listado reservaciones del usuario ======================= -->
+    <div class="col-lg-3 col-md-6 col-sm-12 m-3" *ngIf="!isAdmin">
+      <!-- Clase mb-sm-0 para eliminar el margen en pantallas pequeñas -->
+      <div class="card rounded custom-card position-relative">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="../../../assets/icons/clipboard.svg"
+              alt="clipboard"
+              width="53%"
+            />
+          </div>
+          <h5 tip class="card-title text-center">Mis Reservaciones</h5>
+          <a
+            class="stretched-link"
+            type="button"
+            (click)="customerReservation()"
+          ></a>
+        </div>
+      </div>
+    </div>
+    <hr class="d-sm-none" *ngIf="!isAdmin" />
+    <!-- ======================= Perfil usuario ======================= -->
+    <div class="col-lg-3 col-md-6 col-sm-12 m-3">
+      <!-- Clase mb-sm-0 para eliminar el margen en pantallas pequeñas -->
+      <div class="card rounded custom-card position-relative">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="../../../assets/icons/person.svg"
+              alt="person"
+              width="53%"
+            />
+          </div>
+          <h5 class="card-title text-center">Perfil</h5>
+          <a type="button" (click)="profileNavigation()" class="stretched-link">
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="d-sm-none" />
+    <!-- ======================= Formulario de reserva ======================= -->
+    <div class="col-lg-3 col-md-6 col-sm-12 m-3" *ngIf="!isAdmin">
+      <!-- Clase mb-sm-0 para eliminar el margen en pantallas pequeñas -->
+      <div class="card rounded custom-card position-relative">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="../../../assets/icons/clipboardplus.svg"
+              alt="list+"
+              width="53%"
+            />
+          </div>
+          <h5 class="card-title text-center">Solicitar Reservación</h5>
+          <a
+            type="button"
+            (click)="reservationFormNavigation()"
+            class="stretched-link"
+          >
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="d-sm-none" *ngIf="!isAdmin" />
+    <!-- ======================= Listado mesas ======================= -->
+    <div class="col-lg-3 col-md-6 col-sm-12 m-3" *ngIf="isAdmin">
+      <!-- Clase mb-sm-0 para eliminar el margen en pantallas pequeñas -->
+      <div class="card rounded custom-card position-relative">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="../../../assets/icons/list.svg"
+              alt="imagen1"
+              width="50%"
+            />
+          </div>
+          <h5 class="card-title text-center">Listado de mesas</h5>
+          <a
+            type="button"
+            (click)="tableListNavigation()"
+            class="stretched-link"
+          >
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="d-sm-none" *ngIf="isAdmin" />
+    <!-- ======================= Formulario de mesas ======================= -->
+    <div class="col-lg-3 col-md-6 col-sm-12 m-3" *ngIf="isAdmin">
+      <!-- Clase mb-sm-0 para eliminar el margen en pantallas pequeñas -->
+      <div class="card rounded custom-card">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="../../../assets/icons/table.svg"
+              alt="imagen2"
+              width="52%"
+            />
+          </div>
+          <h5 class="card-title text-center">Registro de mesas</h5>
+          <a
+            type="button"
+            class="stretched-link"
+            (click)="tableFormNavigation()"
+          >
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="d-sm-none" *ngIf="!isAdmin" />
+    <!-- ======================= Logout ======================= -->
+    <div class="col-lg-3 col-md-6 col-sm-12 m-3">
+      <!-- Clase mb-sm-0 para eliminar el margen en pantallas pequeñas -->
+      <div class="card rounded custom-card position-relative">
+        <div class="card-body">
+          <div class="text-center">
+            <img
+              src="../../../assets/icons/sesion.svg"
+              alt="list+"
+              width="53%"
+            />
+          </div>
+          <h5 class="card-title text-center">Cerrar Sesión</h5>
+          <a type="button" class="stretched-link" (click)="logOut()"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

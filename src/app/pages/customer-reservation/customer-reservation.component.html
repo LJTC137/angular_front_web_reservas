@@ -1,0 +1,90 @@
+<div class="container-fluid vh-100">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-12 col-lg-12 mt-5">
+      <h2 class="text-center">Listado de Reservaciones</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 col-md-12 col-lg-10 offset-1">
+      <hr />
+    </div>
+  </div>
+
+  <div class="row justify-content-center pt-3 px-3 pb-2">
+    <div class="col-12 col-md-10 col-lg-10">
+      <div class="row title p-2">
+        <div class="col-6 col-md-6 col-log-10">
+          <h3>Reservaciones</h3>
+        </div>
+        <div class="col-6 col-md-6 col-log-10 text-end">
+          <button
+            type="button"
+            class="btn title2"
+            (click)="navegarAReservationForm()"
+          >
+            <img
+              src="../../../assets/icons/mas.svg"
+              class="img-fluid ms-2"
+              style="max-height: 20px"
+            />
+            Nueva Reserva
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-10">
+      <div class="table-responsive">
+        <table class="table mx-auto custom-table table-borderless">
+          <thead class="justify-content-center text-center">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre de la reserva</th>
+              <th scope="col">Fecha Reservada</th>
+              <th scope="col">Costo total</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Es mesa vip</th>
+              <th scope="col">Visualizar</th>
+            </tr>
+          </thead>
+          <tbody class="justify-content-center text-center">
+            <tr *ngFor="let reserva of customerReservationList">
+              <td id="id" class="id">
+                {{ reserva.id_reserva }}
+              </td>
+              <td id="nombre" class="nombre">
+                {{ reserva.nombre_reservacion }}
+              </td>
+              <td id="fechaReserva1" class="fechaReserva">
+                {{ reserva.fecha_reserva }}
+              </td>
+              <td id="pago" class="pago">${{ reserva.costo_total }}</td>
+              <td
+                id="estado"
+                class="estado text-{{ reserva.estado ? 'warning' : 'success' }}"
+              >
+                {{ reserva.estado ? "Pendiente" : "Completado" }}
+              </td>
+              <td id="estado" class="estado">
+                {{ reserva.mesa.esVip ? "Si" : "No" }}
+              </td>
+              <td>
+                <button
+                  type="submit"
+                  class="btn-icon text-center"
+                  id="visualizar"
+                  [routerLink]="['/home/reservationForm']"
+                  [state]="{ data: reserva, isNew: true }"
+                >
+                  <img src="../../../assets/icons/eye.svg" width="50" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

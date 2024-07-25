@@ -1,0 +1,118 @@
+<div class="container-fluid vh-100">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-12 col-lg-12 mt-5">
+      <h2 class="text-center">Listado de Reservaciones</h2>
+    </div>
+  </div>
+
+  <div class="row justify-content-center pt-3 px-3 pb-2">
+    <div class="col-12 col-md-10 col-lg-10">
+      <div class="row title p-2">
+        <div class="col-6 col-md-6 col-log-10">
+          <h3>Reservaciones</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-10">
+      <div class="table-responsive">
+        <table class="table mx-auto custom-table table-borderless">
+          <thead class="justify-content-center text-center">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Persona registro reserva</th>
+              <th scope="col">Nombre de la reserva</th>
+              <th scope="col">Fecha de Reserva</th>
+              <th scope="col">Fecha de registro reserva</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Visualizar</th>
+            </tr>
+          </thead>
+
+          <tbody class="justify-content-center text-center">
+            <tr *ngFor="let reserva of adminReservationList">
+              <td id="id" class="id">
+                {{ reserva.id_reserva }}
+              </td>
+              <td id="persona" class="persona">
+                {{ reserva.usuario.identificacion }} <br />
+                {{ reserva.usuario.nombres }} {{ reserva.usuario.apellidos }}
+              </td>
+              <td id="nombre" class="nombre">
+                {{ reserva.nombre_reservacion }}
+              </td>
+              <td id="fechaReserva" class="fechaReserva">
+                {{ reserva.fecha_reserva }}
+              </td>
+              <td id="fechaReserva" class="fechaReserva">
+                {{ reserva.fecha_registro_reserva }}
+              </td>
+              <td id="costo" class="costo">
+                {{ reserva.costo_total }}
+              </td>
+              <td
+                id="estado"
+                class="estado text-{{ reserva.estado ? 'warning' : 'success' }}"
+              >
+                {{ reserva.estado ? "Pendiente" : "Completado" }}
+              </td>
+              <td>
+                <button
+                  type="submit"
+                  class="btn-icon text-center"
+                  id="eliminar"
+                  (click)="setEliminateReserva(reserva)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#eliminateModal"
+                >
+                  <img src="../../../assets/icons/trashacan.svg" width="40" />
+                </button>
+                <button
+                  type="submit"
+                  class="btn-icon text-center"
+                  id="actualizar"
+                  [routerLink]="['/home/reservationForm']"
+                  [state]="{ data: reserva, isNew: true }"
+                >
+                  <img src="../../../assets/icons/edit.svg" width="40" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="eliminateModal"
+  tabindex="-1"
+  aria-labelledby="eliminateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5>¿Seguro de que quiere eliminar este registro?</h5>
+        <h5>No se podrá recuperar.</h5>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="deleteReserva()"
+        >
+          Eliminar
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

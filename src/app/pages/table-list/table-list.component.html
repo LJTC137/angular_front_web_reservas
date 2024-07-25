@@ -1,0 +1,100 @@
+<div class="container-fluid vh-100">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-12 col-lg-12 mt-5">
+      <h2 class="text-center">Listado de Mesas</h2>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-10">
+      <div class="table-responsive">
+        <table class="table mx-auto custom-table table-borderless">
+          <thead class="justify-content-center text-center">
+            <tr>
+              <th scope="col"># Mesa</th>
+              <th scope="col">Capacidad de personas</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Es vip</th>
+              <th scope="col">Planta</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Visualizar</th>
+            </tr>
+          </thead>
+          <tbody class="justify-content-center text-center">
+            <tr *ngFor="let mesa of mesasList">
+              <td id="numeroMesa" class="numeroMesa">
+                {{ mesa.numero_de_mesa }}
+              </td>
+              <td id="cantidadPersonas" class="cantidadPersonas">
+                {{ mesa.cantidad_personas }}
+              </td>
+              <td
+                id="estado"
+                class="estado text-{{ mesa.estado ? 'success' : 'danger' }}"
+              >
+                {{ mesa.estado ? "Disponible" : "Ocupada" }}
+              </td>
+              <td id="esVip" class="esVip">
+                {{ mesa.esVip ? "Si" : "No" }}
+              </td>
+              <td id="planta" class="planta">
+                {{ mesa.planta }}
+              </td>
+              <td id="costo" class="costo">$ {{ mesa.costo_mesa }}</td>
+              <td>
+                <button
+                  type="submit"
+                  class="btn-icon text-center"
+                  id="eliminar"
+                  (click)="setEliminateTable(mesa)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#eliminateModal"
+                >
+                  <img src="../../../assets/icons/trashacan.svg" width="40" />
+                </button>
+                <button
+                  type="submit"
+                  class="btn-icon text-center"
+                  id="actualizar"
+                  [routerLink]="['/home/tableForm']"
+                  [state]="{ data: mesa, isNew: true }"
+                >
+                  <img src="../../../assets/icons/edit.svg" width="40" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="eliminateModal"
+  tabindex="-1"
+  aria-labelledby="eliminateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5>¿Seguro de que quiere eliminar este registro?</h5>
+        <h5>No se podrá recuperar.</h5>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="deleteTable()"
+        >
+          Eliminar
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
